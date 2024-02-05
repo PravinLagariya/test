@@ -1,7 +1,14 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 function Theheader() {
-    
+    const [date, setDate] = useState(new Date());
+
+    useEffect(() => {
+        const timer = setInterval(() => setDate(new Date()), 1000)
+        return function cleamup() {
+            clearInterval(timer)
+        }
+    })
 
     return (
         <div>
@@ -27,6 +34,7 @@ function Theheader() {
                             </li>
                         </ul>
                     </div>
+                    <p>Time : {date.toLocaleTimeString()} <br /> Date : {date.toLocaleDateString()}</p>
                 </div>
             </nav>
         </div>
