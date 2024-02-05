@@ -61,7 +61,7 @@ function Todo() {
         console.log('save row');
     }
 
-    const cancalRow = () => {
+    const cancelRow = () => {
         setEdit(false);
     }
 
@@ -93,7 +93,7 @@ function Todo() {
                                                         setEdit(updatedEdit);
                                                     }} className="form-control mb-2" />
                                                 <button onClick={() => saveRow(index)} className='btn btn-success me-2'>save</button>
-                                                <button onClick={() => cancalRow(index)} className='btn btn-danger'>Cancal</button>
+                                                <button onClick={() => cancelRow(index)} className='btn btn-danger'>Cancel</button>
                                             </>
                                         ) : (
                                             <>
