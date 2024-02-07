@@ -4,6 +4,7 @@ import Theheader from './component/Theheader';
 import UseStat from './component/UseStat';
 import Form from './component/Form';
 import Todo from './component/Todo';
+import Gmae from './component/Gmae';
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
       <Theheader />
       {/* <UseStat/> */}
       {/* <Form /> */}
-      <Todo />
+      {/* <Todo /> */}
+      <Gmae />
     </>
   );
 }

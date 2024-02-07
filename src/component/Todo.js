@@ -69,52 +69,55 @@ function Todo() {
     return (
         <div className='container'>
             <div className="mb-3">
-                <label className="form-label">task</label>
+                <label className="form-label"><h2>ToDo List</h2></label>
                 <input value={text} onChange={handleChange} type="text" name='task' className="form-control" />
-                <p className='text-danger'>{tasks}</p>
+                <p className='text-danger'>{text}</p>
                 {error === true ? <p className='text-danger'>Task cannot be empty</p> : ''}
                 <button type="button" onClick={addTask} className="btn btn-primary">Add Task list</button>
             </div>
             <div className='row'>
                 <ul className='col-7'>
                     {tasks.length > 0 ? (
-                        tasks.map((task, index) => (
-                            <div key={index}>
-                                {visible[index] && (
-                                    <li key={index} id={`rowName${index}`}>
-                                        {edit[index] ? (
-                                            <>
-                                                <input
-                                                    value={edit[index]}
-                                                    onChange={(e) => {
-                                                        const editedValue = e.target.value;
-                                                        const updatedEdit = [...edit];
-                                                        updatedEdit[index] = editedValue;
-                                                        setEdit(updatedEdit);
-                                                    }} className="form-control mb-2" />
-                                                <button onClick={() => saveRow(index)} className='btn btn-success me-2'>save</button>
-                                                <button onClick={() => cancelRow(index)} className='btn btn-danger'>Cancel</button>
-                                            </>
-                                        ) : (
-                                            <>
-                                                <p>{task}</p>
-                                                <button onClick={() => editRow(index)} className='btn btn-primary me-2'>edit</button>
-                                                <button onClick={() => removeRow(index)} className='btn btn-danger'>-</button>
-                                            </>
-                                        )}
-                                    </li>
-                                )}
-                            </div>
-                        ))
+                        tasks.slice().reverse().map((task, index) => {
+                            const reversedIndex = tasks.length - 1 - index;
+                            return (
+                                <div key={reversedIndex}>
+                                    {visible[reversedIndex] && (
+                                        <li key={reversedIndex} id={`rowName${reversedIndex}`}>
+                                            {edit[reversedIndex] ? (
+                                                <>
+                                                    <input
+                                                        value={edit[reversedIndex]}
+                                                        onChange={(e) => {
+                                                            const editedValue = e.target.value;
+                                                            const updatedEdit = [...edit];
+                                                            updatedEdit[reversedIndex] = editedValue;
+                                                            setEdit(updatedEdit);
+                                                        }} className="form-control mb-2" />
+                                                    <button onClick={() => saveRow(reversedIndex)} className='btn btn-success me-2'>save</button>
+                                                    <button onClick={() => cancelRow(reversedIndex)} className='btn btn-danger'>Cancel</button>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <p>{task}</p>
+                                                    <button onClick={() => editRow(reversedIndex)} className='btn btn-primary me-2'>edit</button>
+                                                    <button onClick={() => removeRow(reversedIndex)} className='btn btn-danger'>-</button>
+                                                </>
+                                            )}
+                                        </li>
+                                    )}
+                                </div>
+                            );
+                        })
                     ) : (
                         <p>No tasks added yet.</p>
                     )}
                 </ul>
                 <div className='col-5'>
-                    <h2>History</h2>
+                    <h3>History</h3>
                     <ul className='p-0'>
                         {history.length > 0 ? (
-                            history.map((entry, index) => (
+                            history.slice().reverse().map((entry, index) => (
                                 <li key={index}>{entry}</li>
                             ))
                         ) : (
