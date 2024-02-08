@@ -5,6 +5,7 @@ import UseStat from './component/UseStat';
 import Form from './component/Form';
 import Todo from './component/Todo';
 import Game from './component/Game';
+import Guessed from './component/Guessed';
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
       {/* <UseStat/> */}
       {/* <Form /> */}
       {/* <Todo /> */}
-      <Game />
+      {/* <Game /> */}
+      <Guessed />
     </>
   );
 }
