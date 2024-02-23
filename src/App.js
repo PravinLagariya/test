@@ -6,6 +6,7 @@ import Form from './component/Form';
 import Todo from './component/Todo';
 import Game from './component/Game';
 import Guessed from './component/Guessed';
+import Cals from './component/Cals';
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
       {/* <Form /> */}
       {/* <Todo /> */}
       {/* <Game /> */}
-      <Guessed />
+      {/* <Guessed /> */}
+      <Cals />
     </>
   );
 }
